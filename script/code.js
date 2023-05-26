@@ -124,7 +124,7 @@ let testimonial = [
         id: 4,
         name: 'Mihlali Matrose',
         image: 'https://i.postimg.cc/fLJmn5qm/C12-Mihlali-Matrose-1.jpg',
-        description: 'Laiquah is a remarkably determined, passionate, and kind young woman. Her future in the IT sector looks incredibly promising; you can count on that.Laiquah consistently strives to ensure that all her work and deadlines are completed promptly and accurately. Whether working in a group or individually, she excels in both settings. She effortlessly adapts to any environment she is placed in.Once you get to know Laiquah, you immediately feel a sense of belonging. Her warm and kind energy welcomes you with open arms, creating a welcoming and inclusive atmosphere.',
+        description: 'Laiquah is a remarkably determined, passionate, and kind young woman. Her future in the IT sector looks incredibly promising; you can count on that.Laiquah consistently strives to ensure that all her work and deadlines are completed promptly and accurately. Whether working in a group or individually, she excels in both settings. She effortlessly adapts to any environment she is placed in.',
     },
     {
         id: 5,
@@ -148,9 +148,9 @@ testimonial.forEach((data)=> {
         <div class="cards">
             <div id="card-body">
                 <p class="text-black">
-                <img src="${data.image}" alt="image" loading="lazy"> 
+                <img class="img-fluid" src="${data.image}" alt="image" loading="lazy"> 
                 </p>
-                <p class="text-black">
+                <p class="text-black ">
                 ${data.description} 
                 </p>
             </div>
@@ -158,3 +158,63 @@ testimonial.forEach((data)=> {
     </div>
     `
 })
+
+let project = [
+    {
+        id: 1,
+        image: 'https://i.postimg.cc/Z5fGwxMX/Screenshot-2023-05-10-083058.png',
+        title: 'Calendar',
+        description: 'Here is a calendar I made with Boostrap and the highlighted day is the day it currently was.',
+        Github: 'https://github.com/Laiquah/bootstrap',
+        Netlify: 'https://verdant-nougat-f8dd19.netlify.app/',
+    },
+    {
+        id: 2,
+        title: 'Myproject89',
+        image: 'https://i.postimg.cc/vZxNMR9M/Screenshot-2023-05-10-083749.png',
+        description: 'This is a Project of a website we had to create about our favourite fictional characters.',
+        Github: 'https://github.com/Laiquah/my-project89.git',
+        Netlify:'https://glittering-arithmetic-28b22c.netlify.app/',
+    },
+    {
+        id: 3,
+        image: 'https://i.postimg.cc/76xvxxSd/Screenshot-2023-05-10-084059.png',
+        title: 'Resume',
+        description: 'This is a resume I created about myself for a task we had to do.',
+        Github: 'https://github.com/Laiquah/exercise4.git',
+        Netlify: 'https://luminous-muffin-3bb407.netlify.app/',
+    },
+    {
+        id: 4,
+        image: 'https://i.postimg.cc/MGsyP5Z4/Screenshot-2023-05-10-085054.png',
+        title: 'Animation',
+        description: 'This is a task we had to do with an animation so that we had to learn and create ourselves.',
+        Github: 'https://github.com/Laiquah/animation',
+        Netlify: 'https://poetic-granita-15755b.netlify.app/',
+    }
+]
+
+let divProject = document.querySelector('.project');
+project.forEach((data)=> {
+    divProject.innerHTML += `
+    <div class="card">
+        <h4 class="display-4">${data.title}</h4>
+        <div class="card-body">
+            <p class="text-black">
+               <img src="${data.image}" alt="image" loading="lazy" class="img-fluid">
+            </p>
+            <p class="text-black">
+                ${data.description} 
+            </p>
+            <p class="text-black">
+                <a href="${data.Github}" target="_blank">Github</a>
+            </p>
+            <p class="text-black">
+                <a href="${data.Netlify}" target="_blank">Netlify</a>
+            </p>
+        </div>
+    </div>
+    `
+})
+
+
