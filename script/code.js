@@ -178,19 +178,19 @@ let project = [
     },
     {
         id: 3,
-        image: 'https://i.postimg.cc/76xvxxSd/Screenshot-2023-05-10-084059.png',
-        title: 'Resume',
-        description: 'This is a resume I created about myself for a task we had to do.',
-        Github: 'https://github.com/Laiquah/exercise4.git',
-        Netlify: 'https://luminous-muffin-3bb407.netlify.app/',
+        image: 'https://i.postimg.cc/59p8HgNF/Screenshot-2023-05-26-144858.png',
+        title: 'Calculator',
+        description: 'This is a calculator I made during the introduction of Javascript.',
+        Github: 'https://github.com/Laiquah/calculator',
+        Netlify: 'https://laiquahcalculator.netlify.app/',
     },
     {
         id: 4,
-        image: 'https://i.postimg.cc/MGsyP5Z4/Screenshot-2023-05-10-085054.png',
-        title: 'Animation',
-        description: 'This is a task we had to do with an animation so that we had to learn and create ourselves.',
-        Github: 'https://github.com/Laiquah/animation',
-        Netlify: 'https://poetic-granita-15755b.netlify.app/',
+        image: 'https://i.postimg.cc/dVn8C99f/Screenshot-2023-05-26-145340.png',
+        title: 'BMI calculator',
+        description: 'This is a task we had to do in relation to understand how javscript works.',
+        Github: 'https://github.com/Laiquah/BMIcalculator.git',
+        Netlify: 'https://laiquahbmicalculator.netlify.app/',
     }
 ]
 
@@ -216,5 +216,56 @@ project.forEach((data)=> {
     </div>
     `
 })
+
+const form = document.getElementById("form");
+const result = document.getElementById("result");
+form.addEventListener("submit", function (e) {
+  const formData = new FormData(form);
+  e.preventDefault();
+  var object = {};
+  formData.forEach((value, key) => {
+    object[key] = value;
+  });
+  var json = JSON.stringify(object);
+  result.innerHTML = "Please wait...";
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: json
+  })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+        result.innerHTML = json.message;
+        result.classList.remove("text-gray-500");
+        result.classList.add("text-green-500");
+      } else {
+        console.log(response);
+        result.innerHTML = json.message;
+        result.classList.remove("text-gray-500");
+        result.classList.add("text-red-500");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      result.innerHTML = "Something went wrong!";
+    })
+    .then(function () {
+      form.reset();
+      setTimeout(() => {
+        result.style.display = "none";
+      }, 5000);
+    });
+});
+
+
+
+
+
+
+
 
 
